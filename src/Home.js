@@ -27,8 +27,8 @@ class Home extends Component {
         <h4 className="steps"> 2. Add Tasks </h4>
         <h4 className="steps"> 3. Get sh*t done </h4>
       </div>
-      <Link to="/sign-in"> Sign-In </Link>
-      <Link to="/sign-up"> Sign-Up </Link>
+      <Link to="/sign-in"> Login </Link>
+      <Link to="/sign-up"> Register </Link>
     </div>
     )
   }
