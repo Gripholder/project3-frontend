@@ -19,23 +19,22 @@ const config = {
 }
 
 class App extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      name: "",
-      phone: ""
-    }
-  }
 
   render() {
     return (
       <Router>
         <div>
-          <nav>
-
-         </nav>
+          {/* <nav>
+         </nav> */}
           <main>
             <Switch>
+
+            <Route
+              path="/:name"
+              render={ (props) => {
+                return(<Task {...props}/>)
+              }}
+            />
             <Route
               path="/"
               render={(props) => {
@@ -43,12 +42,6 @@ class App extends Component {
                   <Person />
                 )
               }}
-            />
-            <Route
-              path="/:name"
-              render={ (props) => (
-                <Task {...props}/>
-              )}
             />
           </Switch>
           </main>

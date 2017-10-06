@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import {
   BrowserRouter as Router,
   Link,
@@ -60,22 +61,22 @@ class Person extends Component{
       // PATHNAME HAS TO BE IN ALL LOWERCASE!!!!!!
       let pathname = `/${person.name}`
      return (
-       <Router>
+
         <p key={person._id}>
           <Link to ={{pathname, state: {selectedPerson: person}}}>{person.name}</Link>
         </p>
-      </Router>
+
       )
     })
     return (
     <div>
-      {peopleRender}
       <h2>Let's Get Started!</h2>
       <form onSubmit={ (e) => this.newPerson(e) } method='post'>
         <input onChange={ (e) => this.nameChange(e) } type='text' placeholder='Name' />
         <input onChange={(e) => this.phoneChange(e)} type='text' placeholder='Phone'/>
         <button type='submit'>add</button>
       </form>
+        {peopleRender}
      </div>
     )
   }
