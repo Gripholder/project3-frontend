@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './Profile.css';
 
-class App extends Component {
+class Profile extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      username: "",
+      name: "",
+      email: "",
+      phonenum: ""
+    }
+  }
   render() {
     return (
       <div className="App">
@@ -18,4 +27,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Profile;
