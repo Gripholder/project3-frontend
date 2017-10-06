@@ -33,7 +33,7 @@ class App extends Component {
         <div>
           <nav>
 
-          </nav>
+         </nav>
           <main>
             <Switch>
             <Route
