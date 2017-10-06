@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import Person from './Person.js'
 import Task from './Task.js'
 import Home from './Home.js'
+import logo from './manager.png'
 import './App.css';
 
 import {
   BrowserRouter as Router,
   Route,
   Link,
+  Switch
 } from 'react-router-dom'
 
 class App extends Component {
@@ -16,7 +17,7 @@ class App extends Component {
     super(props)
     this.state = {
       name: "",
-      phonenum: ""
+      phone: ""
     }
   }
 
@@ -25,7 +26,22 @@ class App extends Component {
     return (
       <Router>
         <div>
-    </div>
+          <nav>
+
+          </nav>
+          <main>
+            <Switch>
+            <Route
+              path="/"
+              render={(props) => {
+                return (
+                  <Home />
+                )
+              }}
+            />
+          </Switch>
+          </main>
+        </div>
       </Router>
     );
   }
