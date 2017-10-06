@@ -40,9 +40,15 @@ class App extends Component {
               path="/"
               render={(props) => {
                 return (
-                  <Home />
+                  <Person />
                 )
               }}
+            />
+            <Route
+              path="/:name"
+              render={ (props) => (
+                <Task {...props}/>
+              )}
             />
           </Switch>
           </main>
