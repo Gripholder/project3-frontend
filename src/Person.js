@@ -18,14 +18,14 @@ class Person extends Component{
       phone: '',
       people: []
     }
-    this.getPerson = this.getPerson.bind(this)
+    this.getPeople = this.getPeople.bind(this)
   }
 
  componentDidMount(){
-    this.getPerson()
+    this.getPeople()
   }
 
- getPerson(){
+  getPeople(){
     axios.get("http://localhost:3001").then((response) => {
       console.log(response)
       this.setState({
@@ -57,7 +57,7 @@ class Person extends Component{
   }
 
  render() {
-    let peopleRender = this.state.people.map(person => {
+    let peopleRender = this.state.people.map((person) => {
       // PATHNAME HAS TO BE IN ALL LOWERCASE!!!!!!
       let pathname = `/${person.name}`
      return (
