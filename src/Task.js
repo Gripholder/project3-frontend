@@ -36,7 +36,7 @@ class Task extends Component{
     e.preventDefault()
     console.log(this.state.person.name)
     axios.post(`http://localhost:3001/${this.state.person.name}`,
-    {name: this.state.newName, phone: this.state.newPrice, tasks: this.state.tasks})
+    {name: this.state.newName, phone: this.state.newPrice})
     .then( response => {
       this.setState({
         person: response.data
@@ -54,25 +54,25 @@ class Task extends Component{
 
   newTask(e){
      e.preventDefault()
-     axios.post('http://localhost:3001/addTask',
-     {name: this.state.name, phone: this.state.phone, tasks: this.state.tasks})
+     axios.post(`http://localhost:3001/${this.state.person.name}/addTask`,
+     {tasks: this.state.tasks})
      .then( response => console.log(response))
      .then( err => console.error(err))
-     .then(() => this.updatePerson())
+     .then(() => this.getTasks())
    }
-  deleteTask(e){
-    e.preventDefault()
-    axios.post(`http://localhost:3001/${this.state.person.name}/${this.state.person.tasks}/remove`)
-    console.log(this.state.person.tasks.title)
-  }
+   deleteTask(e){
+     e.preventDefault()
+     axios.post(`http://localhost:3001/${this.state.person.name}/${this.state.person.tasks.title}/remove`)
+   }
 
   render(){
     let tasksRender = this.state.person.tasks.map((task) => {
       // PATHNAME HAS TO BE IN ALL LOWERCASE!!!!!!
+      console.log(task)
      return (
         <p key={task._id}>
           {task.title}
-          <button onClick={(e) => this.deleteTask(e)} method='post'>Delete Task</button>
+          <button onClick={(e) => axios.post(`http://localhost:3001/${this.state.person.name}/${task.title}/remove`)} method='post'>Delete Task</button>
         </p>
       )
     })
@@ -88,8 +88,8 @@ class Task extends Component{
           <button type='submit'>Update</button>
         </form>
         <h2>New task</h2>
-        <form onSubmit={(e) => this.updatePerson(e)} method='put'>
-          <input onChange={(e) => this.nameChange(e)} type='text' value={this.state.newName} />
+        <form onSubmit={(e) => this.newTask(e)} method='put'>
+          <input onChange={(e) => this.getTasks(e)} type='text' placeholder='New Task' />
           <button type='submit'>New Task</button>
         </form>
         <button onClick={(e) => this.deletePerson(e)} method='post'>Delete</button>
