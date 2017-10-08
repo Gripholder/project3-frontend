@@ -1,8 +1,4 @@
 import React, { Component } from 'react'
-import {
-  Route,
-  Link
-} from "react-router-dom"
 import axios from 'axios'
 
 class Task extends Component{
@@ -11,7 +7,8 @@ class Task extends Component{
     this.state={
       person: this.props.location.state.selectedPerson,
       newName: this.props.location.state.selectedPerson.name,
-      newPhone: this.props.location.state.selectedPerson.phone
+      newPhone: this.props.location.state.selectedPerson.phone,
+      tasks: this.props.location.state.selectedPerson.tasks,
     }
   }
   nameChange(e) {
@@ -20,6 +17,7 @@ class Task extends Component{
     })
     console.log(this.state.newName)
   }
+
   phoneChange(e) {
     this.setState({
       newPhone: e.target.value
@@ -27,11 +25,18 @@ class Task extends Component{
     console.log(this.state.newPhone)
   }
 
+  getTasks(e){
+    this.setState({
+      tasks: e.target.value
+    })
+    console.log(this.state.tasks)
+  }
+
   updatePerson(e){
     e.preventDefault()
     console.log(this.state.person.name)
     axios.post(`http://localhost:3001/${this.state.person.name}`,
-    {name: this.state.newName, phone: this.state.newPrice})
+    {name: this.state.newName, phone: this.state.newPrice, tasks: this.state.tasks})
     .then( response => {
       this.setState({
         person: response.data
@@ -40,7 +45,6 @@ class Task extends Component{
     })
     .then( err => console.error(err))
   }
-
   deletePerson(e){
     e.preventDefault()
     axios.post(`http://localhost:3001/${this.state.person.name}/delete`)
@@ -48,16 +52,45 @@ class Task extends Component{
     this.props.history.goBack();
   }
 
+  newTask(e){
+     e.preventDefault()
+     axios.post('http://localhost:3001/addTask',
+     {name: this.state.name, phone: this.state.phone, tasks: this.state.tasks})
+     .then( response => console.log(response))
+     .then( err => console.error(err))
+     .then(() => this.updatePerson())
+   }
+  deleteTask(e){
+    e.preventDefault()
+    axios.post(`http://localhost:3001/${this.state.person.name}/${this.state.person.tasks}/remove`)
+    console.log(this.state.person.tasks.title)
+  }
+
   render(){
+    let tasksRender = this.state.person.tasks.map((task) => {
+      // PATHNAME HAS TO BE IN ALL LOWERCASE!!!!!!
+     return (
+        <p key={task._id}>
+          {task.title}
+          <button onClick={(e) => this.deleteTask(e)} method='post'>Delete Task</button>
+        </p>
+      )
+    })
     return(
       <div>
         <h1>{this.state.person.name}</h1>
         <h1>{this.state.person.phone}</h1>
+        <h1>{tasksRender}</h1>
         <h2>Update Person</h2>
         <form onSubmit={(e) => this.updatePerson(e)} method='put'>
           <input onChange={(e) => this.nameChange(e)} type='text' value={this.state.newName} />
           <input onChange={(e) => this.phoneChange(e)} type='text' value={this.state.newPhone} />
           <button type='submit'>Update</button>
+        </form>
+        <h2>New task</h2>
+        <form onSubmit={(e) => this.updatePerson(e)} method='put'>
+          <input onChange={(e) => this.nameChange(e)} type='text' value={this.state.newName} />
+          <button type='submit'>New Task</button>
         </form>
         <button onClick={(e) => this.deletePerson(e)} method='post'>Delete</button>
       </div>
