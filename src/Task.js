@@ -48,10 +48,6 @@ class Task extends Component{
     this.props.history.goBack();
   }
 
-
-
-
-
 //WHERE I"M ADDING A NEW TASK
    newTask(e){
      this.setState({
@@ -64,7 +60,7 @@ class Task extends Component{
      e.preventDefault()
      console.log(this.state.person.tasks)
      axios.post(`http://localhost:3001/${this.state.person.name}/addTask`,
-       {tasks: this.state.person.tasks.concat(this.state.newTask)})
+       {tasks: { title: this.state.newTask }})
      .then(response => {
        this.setState({
          person: response.data
