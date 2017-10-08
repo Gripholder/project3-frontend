@@ -13,7 +13,6 @@ class Person extends Component{
       name: '',
       phone: '',
       people: [],
-      tasks: []
     }
     this.getPeople = this.getPeople.bind(this)
   }
@@ -50,7 +49,7 @@ class Person extends Component{
     {name: this.state.name, phone: this.state.phone})
     .then( response => console.log(response))
     .then( err => console.error(err))
-    .then(() => this.getPerson())
+    .then(() => this.getPeople())
   }
 
  render() {
@@ -69,7 +68,7 @@ class Person extends Component{
       <form onSubmit={ (e) => this.newPerson(e) } method='post'>
         <input onChange={ (e) => this.getName(e) } type='text' placeholder='Name' />
         <input onChange={(e) => this.getPhone(e)} type='text' placeholder='Phone'/>
-        <button type='submit'>add</button>
+        <button type='submit'>Add new person</button>
       </form>
         {peopleRender}
      </div>
