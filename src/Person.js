@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 
 import {
-  BrowserRouter as Router,
-  Link,
-  Route,
-  Redirect,
-  Switch
+  Link
 } from "react-router-dom"
 
 import axios from 'axios'
@@ -17,7 +13,6 @@ class Person extends Component{
       name: '',
       phone: '',
       people: [],
-      tasks: []
     }
     this.getPeople = this.getPeople.bind(this)
   }
@@ -35,13 +30,13 @@ class Person extends Component{
     })
   }
 
- nameChange(e) {
+ getName(e) {
     this.setState({
       name: e.target.value
     })
     console.log( this.state.name )
   }
-  phoneChange(e) {
+  getPhone(e) {
     this.setState({
       phone: e.target.value
     })
@@ -54,7 +49,7 @@ class Person extends Component{
     {name: this.state.name, phone: this.state.phone})
     .then( response => console.log(response))
     .then( err => console.error(err))
-    .then(() => this.getPerson())
+    .then(() => this.getPeople())
   }
 
  render() {
@@ -62,20 +57,18 @@ class Person extends Component{
       // PATHNAME HAS TO BE IN ALL LOWERCASE!!!!!!
       let pathname = `/${person.name}`
      return (
-
         <p key={person._id}>
           <Link to ={{pathname, state: {selectedPerson: person}}}>{person.name}</Link>
         </p>
-
       )
     })
     return (
     <div>
       <h2>Let's Get Started!</h2>
       <form onSubmit={ (e) => this.newPerson(e) } method='post'>
-        <input onChange={ (e) => this.nameChange(e) } type='text' placeholder='Name' />
-        <input onChange={(e) => this.phoneChange(e)} type='text' placeholder='Phone'/>
-        <button type='submit'>add</button>
+        <input onChange={ (e) => this.getName(e) } type='text' placeholder='Name' />
+        <input onChange={(e) => this.getPhone(e)} type='text' placeholder='Phone'/>
+        <button type='submit'>Add new person</button>
       </form>
         {peopleRender}
      </div>

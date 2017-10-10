@@ -1,8 +1,4 @@
 import React, { Component } from 'react'
-import {
-  Route,
-  Link
-} from "react-router-dom"
 import axios from 'axios'
 
 class Task extends Component{
@@ -12,15 +8,18 @@ class Task extends Component{
       person: this.props.location.state.selectedPerson,
       newName: this.props.location.state.selectedPerson.name,
       newPhone: this.props.location.state.selectedPerson.phone,
-      tasks: this.props.location.state.selectedPerson.tasks
+      tasks: this.props.location.state.selectedPerson.tasks,
+      newTask: ''
     }
   }
+
   nameChange(e) {
     this.setState({
       newName: e.target.value
     })
     console.log(this.state.newName)
   }
+
   phoneChange(e) {
     this.setState({
       newPhone: e.target.value
@@ -49,18 +48,36 @@ class Task extends Component{
     this.props.history.goBack();
   }
 
-  deleteTask(e){
-    e.preventDefault()
-    axios.post(`http://localhost:3001/${this.state.person.name}/${this.state.person.tasks}/remove`)
-  }
+//WHERE I"M ADDING A NEW TASK
+   newTask(e){
+     this.setState({
+       newTask: e.target.value
+     })
+     console.log(this.state.newTask)
+   }
+
+   addTask(e){
+     e.preventDefault()
+     console.log(this.state.person.tasks)
+     axios.post(`http://localhost:3001/${this.state.person.name}/addTask`,
+       {tasks: { title: this.state.newTask }})
+     .then(response => {
+       this.setState({
+         person: response.data
+       })
+       console.log(response)
+     })
+     .then(err => console.error(err))
+   }
 
   render(){
     let tasksRender = this.state.person.tasks.map((task) => {
       // PATHNAME HAS TO BE IN ALL LOWERCASE!!!!!!
+      console.log(task)
      return (
         <p key={task._id}>
           {task.title}
-          <button onClick={(e) => this.deleteTask(e)} method='post'>Delete Task</button>
+          <button onClick={(e) => axios.post(`http://localhost:3001/${this.state.person.name}/${task.title}/remove`)} method='post'>Delete Task</button>
         </p>
       )
     })
@@ -68,12 +85,24 @@ class Task extends Component{
       <div>
         <h1>{this.state.person.name}</h1>
         <h1>{this.state.person.phone}</h1>
-        <h1>{tasksRender}</h1>
+        <p>{tasksRender}</p>
         <h2>Update Person</h2>
         <form onSubmit={(e) => this.updatePerson(e)} method='put'>
           <input onChange={(e) => this.nameChange(e)} type='text' value={this.state.newName} />
           <input onChange={(e) => this.phoneChange(e)} type='text' value={this.state.newPhone} />
           <button type='submit'>Update</button>
+        </form>
+
+
+
+
+
+
+{/*FORM FOR ADDING A NEW TASK  */}
+        <h2>New task</h2>
+        <form onSubmit={(e) => this.addTask(e)} method='put'>
+          <input onChange={(e) => this.newTask(e)} type='text' value={this.state.newTask} />
+          <button type='submit'>New Task</button>
         </form>
         <button onClick={(e) => this.deletePerson(e)} method='post'>Delete</button>
       </div>
