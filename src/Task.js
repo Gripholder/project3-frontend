@@ -98,18 +98,28 @@ class Task extends Component{
         <h1>{this.state.person.phone}</h1>
         <p>{tasksRender}</p>
         <h2>Update Person</h2>
-        <form onSubmit={(e) => this.updatePerson(e)} method='put'>
-          <input onChange={(e) => this.nameChange(e)} type='text' value={this.state.newName} />
-          <input onChange={(e) => this.phoneChange(e)} type='text' value={this.state.newPhone} />
-          <button type='submit'>Update</button>
+        <form class="col s12" onSubmit={(e) => this.updatePerson(e)} method='put'>
+          <div class="row">
+            <div class="input-field col s6">
+              <i class="material-icons prefix">account_circle</i>
+              <input onChange={(e) => this.nameChange(e)} id="icon_prefix" type="text" class="validate" value={this.state.newName}/>
+            </div>
+            <div class="input-field col s6">
+              <i class="material-icons prefix">phone</i>
+              <input onChange={(e) => this.phoneChange(e)} id="icon_telephone" type="tel" class="validate" value={this.state.newPhone}/>
+            </div>
+            <button type='submit'>Update</button>
+          </div>
         </form>
-
 {/*FORM FOR ADDING A NEW TASK  */}
         <h2>New task</h2>
-        <form onSubmit={(e) => this.addTask(e)} method='put'>
-          <input onChange={(e) => this.newTask(e)} type='text'  />
-          <input onChange={(e) => this.newDate(e)} type='date'  />
+
+        <form class="col s12" onSubmit={(e) => this.addTask(e)} method='put'>
+          <div class="input-field col s6">
+          <input onChange={(e) => this.newTask(e)} type='text' placeholder="task name"/>
+          <input onChange={(e) => this.newDate(e)} type='date' />
           <button type='submit'>New Task</button>
+          </div>
         </form>
         <button onClick={(e) => this.deletePerson(e)} method='post'>Delete</button>
       </div>
