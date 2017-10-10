@@ -16,7 +16,8 @@ class Person extends Component{
     this.state = {
       name: '',
       phone: '',
-      people: []
+      people: [],
+      tasks: []
     }
     this.getPeople = this.getPeople.bind(this)
   }

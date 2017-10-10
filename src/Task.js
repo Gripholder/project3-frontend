@@ -11,7 +11,8 @@ class Task extends Component{
     this.state={
       person: this.props.location.state.selectedPerson,
       newName: this.props.location.state.selectedPerson.name,
-      newPhone: this.props.location.state.selectedPerson.phone
+      newPhone: this.props.location.state.selectedPerson.phone,
+      tasks: this.props.location.state.selectedPerson.tasks
     }
   }
   nameChange(e) {
@@ -48,11 +49,26 @@ class Task extends Component{
     this.props.history.goBack();
   }
 
+  deleteTask(e){
+    e.preventDefault()
+    axios.post(`http://localhost:3001/${this.state.person.name}/${this.state.person.tasks}/remove`)
+  }
+
   render(){
+    let tasksRender = this.state.person.tasks.map((task) => {
+      // PATHNAME HAS TO BE IN ALL LOWERCASE!!!!!!
+     return (
+        <p key={task._id}>
+          {task.title}
+          <button onClick={(e) => this.deleteTask(e)} method='post'>Delete Task</button>
+        </p>
+      )
+    })
     return(
       <div>
         <h1>{this.state.person.name}</h1>
         <h1>{this.state.person.phone}</h1>
+        <h1>{tasksRender}</h1>
         <h2>Update Person</h2>
         <form onSubmit={(e) => this.updatePerson(e)} method='put'>
           <input onChange={(e) => this.nameChange(e)} type='text' value={this.state.newName} />
