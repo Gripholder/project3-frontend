@@ -88,7 +88,13 @@ class Task extends Component{
           <br/>
           End Date: {task.date}
           <br/>
-          <button onClick={(e) => axios.post(`http://localhost:3001/${this.state.person.name}/${task.title}/remove`)} method='post'>Delete Task</button>
+          <button onClick={(e) => axios.post(`http://localhost:3001/${this.state.person.name}/${task.title}/remove`).then(response => {
+                 this.setState({
+                   person: response.data
+                 })
+                 console.log(response)
+               })
+               .then(err => console.error(err))} method='post'>Delete Task</button>
         </p>
       )
     })
