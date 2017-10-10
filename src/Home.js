@@ -13,6 +13,7 @@ import logo from './manager.png'
 class Home extends Component {
   render() {
     return (
+      <Router>
       <div>
         <header>
       <img src={logo} className="App-logo" alt="logo" />
@@ -30,6 +31,7 @@ class Home extends Component {
       <Link to="/sign-in"> Login </Link>
       <Link to="/sign-up"> Register </Link>
     </div>
+  </Router>
     )
   }
 }
