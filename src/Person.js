@@ -20,7 +20,7 @@ class Person extends Component{
   }
 
   getPeople(){
-    axios.get("http://localhost:3001").then((response) => {
+    axios.get("http://localhost:3001/home").then((response) => {
       console.log(response)
       this.setState({
         people: response.data
@@ -43,7 +43,7 @@ class Person extends Component{
 
  newPerson(e){
     e.preventDefault()
-    axios.post('http://localhost:3001',
+    axios.post('http://localhost:3001/home',
     {name: this.state.name, phone: this.state.phone})
     .then( response => console.log(response))
     .then( err => console.error(err))

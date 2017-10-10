@@ -8,7 +8,7 @@ import {
   Link,
   Switch
 } from 'react-router-dom'
-import logo from './manager.png'
+import logo from './smiley-phone.png'
 import video from './phone-scroll.mp4'
 
 class Home extends Component {
@@ -18,7 +18,10 @@ class Home extends Component {
         <header>
         <nav>
       <div class="nav-wrapper">
-        <img src={logo} className="App-logo brand-logo" alt="logo" />
+        <div id="logo">
+          <img src={logo} href="/" className="App-logo brand-logo" alt="logo" />
+          <h1 className="Logo-text brand-logo">iDidit</h1>
+        </div>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
           <li><a href="sass.html">My Dashboard</a></li>
@@ -42,17 +45,30 @@ class Home extends Component {
       <source src={video}  type="video/ogg" />
       Your browser does not support the video tag.
     </video>
-  <h1 className="App-title">Accountabil-a-Buddy</h1>
-  <h3> Never procrastinate again! </h3>
+  <h1 className="App-title">iDidit</h1>
+  <h3> Procrastination meets its match </h3>
   </div>
 
 
     <div id="header-2">
-      <p> How it works: </p>
+      <h4 id="instructions-title"> How it works: </h4>
       <div id="instructions">
-        <h4 className="steps"> 1. Create an Account </h4>
-        <h4 className="steps"> 2. Add Tasks </h4>
-        <h4 className="steps"> 3. Get sh*t done </h4>
+
+        <div class="instruction-steps">
+        <i class="large material-icons">assignment</i>
+        <h5 className="steps"> 1. Create tasks </h5>
+        </div>
+
+        <div class="instruction-steps">
+        <i class="large material-icons">sms_failed</i>
+        <h5 className="steps"> 2. Receive reminders </h5>
+        </div>
+
+        <div class="instruction-steps">
+        <i class="large material-icons">done_all</i>
+        <h5 className="steps"> 3. Get stuff done </h5>
+        </div>
+
       </div>
       <Link to="/sign-in"> Login </Link>
       <Link to="/sign-up"> Register </Link>
