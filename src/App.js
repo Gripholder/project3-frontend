@@ -39,10 +39,18 @@ class App extends Component {
               path="/"
               render={(props) => {
                 return (
-                  <Person />
+                  <Home />
                 )
               }}
             />
+            {/* <Route
+              path="/sign-up"
+              render={(props) => {
+                return (
+                  <Person />
+                )
+              }}
+            /> */}
           </Switch>
           </main>
         </div>

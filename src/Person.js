@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-
 import {
   Link
 } from "react-router-dom"
-
 import axios from 'axios'
-
+import './css/materialize.css'
 class Person extends Component{
   constructor(props){
     super(props)
@@ -63,15 +61,25 @@ class Person extends Component{
       )
     })
     return (
-    <div>
-      <h2>Let's Get Started!</h2>
-      <form onSubmit={ (e) => this.newPerson(e) } method='post'>
-        <input onChange={ (e) => this.getName(e) } type='text' placeholder='Name' />
-        <input onChange={(e) => this.getPhone(e)} type='text' placeholder='Phone'/>
-        <button type='submit'>Add new person</button>
-      </form>
-        {peopleRender}
-     </div>
+      <div class="row">
+        <h2>Let's Get Started!</h2>
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s6">
+                <i class="material-icons prefix">account_circle</i>
+                <input onChange={ (e) => this.getName(e) } id="icon_prefix" type="text" class="validate"/>
+                <label for="icon_prefix">First Name</label>
+              </div>
+              <div class="input-field col s6">
+                <i class="material-icons prefix">phone</i>
+                <input onChange={(e) => this.getPhone(e)} id="icon_telephone" type="tel" class="validate"/>
+                <label for="icon_telephone">Telephone</label>
+              </div>
+            </div>
+          </form>
+          {peopleRender}
+        </div>
+
     )
   }
 

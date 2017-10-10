@@ -1,9 +1,17 @@
 body {
   text-align: center;
+  /*background-color: rgba(16,	52,	99,	1);*/
+  background-color: rgba(42,	54,	58,	1);
+  color: white;
+  font-family: 'Oxygen', sans-serif;
 }
 
 header {
   margin-top: 35px;
+}
+
+h1 {
+  font-weight: bolder;
 }
 
 .App-logo {
@@ -18,12 +26,12 @@ header {
   color: white;
 }
 
-.App-title {
-  font-size: 1.5em;
-}
-
 .App-intro {
   font-size: large;
+}
+
+#divider-1 {
+  margin: 100px 0 100px 0;
 }
 
 #instructions {
@@ -34,6 +42,10 @@ header {
 
 .steps {
   margin: 50px;
+}
+
+.edit-form {
+  width: 75px;
 }
 
 /*@keyframes App-logo-spin {
