@@ -1,30 +1,21 @@
-import React, { Component } from 'react';
+// src/Home.js
+
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { withAuth } from '@okta/okta-react';
+import { withRouter } from 'react-router';
+import { withAuth } from './auth';
 
-export default withAuth(class Dashboard extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { authenticated: null };
-    this.checkAuthentication = this.checkAuthentication.bind(this);
-    this.checkAuthentication();
-  }
+export default withAuth(withRouter(props => {
+  // Change the button that's displayed, based on our authentication status
+  const button = props.auth.isAuthenticated() ?
+    <button onClick={props.auth.logout.bind(null, props.history)}>Logout</button> :
+    <button onClick={props.auth.login.bind(null, props.history)}>Login</button>;
 
-  async checkAuthentication() {
-    const authenticated = await this.props.auth.isAuthenticated();
-    if (authenticated !== this.state.authenticated) {
-      this.setState({ authenticated });
-    }
-  }
-
-  componentDidUpdate() {
-    this.checkAuthentication();
-  }
-
-  render() {
-    if (this.state.authenticated === null) return null;
-    return this.state.authenticated ?
-      <button onClick={this.props.auth.logout}>Logout</button> :
-      <button onClick={this.props.auth.login}>Login</button>;
-  }
-})
+  return (
+    <div>
+      <Link to='/'>Home</Link><br/>
+      <Link to='/protected'>Protected</Link><br/>
+      {button}
+    </div>
+  );
+}));
