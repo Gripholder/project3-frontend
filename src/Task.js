@@ -9,6 +9,7 @@ class Task extends Component{
       newName: this.props.location.state.selectedPerson.name,
       newPhone: this.props.location.state.selectedPerson.phone,
       tasks: this.props.location.state.selectedPerson.tasks,
+      newTask: ''
     }
   }
 
@@ -26,13 +27,6 @@ class Task extends Component{
     console.log(this.state.newPhone)
   }
 
-  getTasks(e){
-    this.setState({
-      tasks: e.target.value
-    })
-    console.log(this.state.tasks)
-  }
-
   updatePerson(e){
     e.preventDefault()
     console.log(this.state.person.name)
@@ -46,6 +40,7 @@ class Task extends Component{
     })
     .then( err => console.error(err))
   }
+
   deletePerson(e){
     e.preventDefault()
     axios.post(`http://localhost:3001/${this.state.person.name}/delete`)
@@ -53,17 +48,26 @@ class Task extends Component{
     this.props.history.goBack();
   }
 
-  newTask(e){
-     e.preventDefault()
-     axios.post(`http://localhost:3001/${this.state.person.name}/addTask`,
-     {tasks: this.state.tasks})
-     .then( response => console.log(response))
-     .then( err => console.error(err))
-     .then(() => this.getTasks())
+//WHERE I"M ADDING A NEW TASK
+   newTask(e){
+     this.setState({
+       newTask: e.target.value
+     })
+     console.log(this.state.newTask)
    }
-   deleteTask(e){
+
+   addTask(e){
      e.preventDefault()
-     axios.post(`http://localhost:3001/${this.state.person.name}/${this.state.person.tasks.title}/remove`)
+     console.log(this.state.person.tasks)
+     axios.post(`http://localhost:3001/${this.state.person.name}/addTask`,
+       {tasks: { title: this.state.newTask }})
+     .then(response => {
+       this.setState({
+         person: response.data
+       })
+       console.log(response)
+     })
+     .then(err => console.error(err))
    }
 
   render(){
@@ -88,9 +92,16 @@ class Task extends Component{
           <input onChange={(e) => this.phoneChange(e)} type='text' value={this.state.newPhone} />
           <button type='submit'>Update</button>
         </form>
+
+
+
+
+
+
+{/*FORM FOR ADDING A NEW TASK  */}
         <h2>New task</h2>
-        <form onSubmit={(e) => this.newTask(e)} method='put'>
-          <input onChange={(e) => this.getTasks(e)} type='text' placeholder='New Task' />
+        <form onSubmit={(e) => this.addTask(e)} method='put'>
+          <input onChange={(e) => this.newTask(e)} type='text' value={this.state.newTask} />
           <button type='submit'>New Task</button>
         </form>
         <button onClick={(e) => this.deletePerson(e)} method='post'>Delete</button>
