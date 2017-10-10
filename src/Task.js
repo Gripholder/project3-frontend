@@ -70,8 +70,6 @@ class Task extends Component{
      .then(err => console.error(err))
    }
 
-
-
   render(){
     let tasksRender = this.state.person.tasks.map((task) => {
       // PATHNAME HAS TO BE IN ALL LOWERCASE!!!!!!
@@ -87,7 +85,7 @@ class Task extends Component{
       <div>
         <h1>{this.state.person.name}</h1>
         <h1>{this.state.person.phone}</h1>
-        <h1>{tasksRender}</h1>
+        <p>{tasksRender}</p>
         <h2>Update Person</h2>
         <form onSubmit={(e) => this.updatePerson(e)} method='put'>
           <input onChange={(e) => this.nameChange(e)} type='text' value={this.state.newName} />
