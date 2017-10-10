@@ -1,7 +1,7 @@
 body {
   text-align: center;
-  color: grey;
-  font-family: 'Oxygen', sans-serif;
+  /*font-family: 'Oxygen', sans-serif;*/
+  font-family: 'Bree Serif', serif;
 }
 
 header {
@@ -12,37 +12,47 @@ h1 {
   font-weight: bolder;
 }
 
+.Logo-text {
+  margin: 15px 0 0 0;
+}
+
 .App-logo {
   /*animation: App-logo-spin infinite 20s linear;*/
   height: 50px;
-  margin-top: 10px;
+  margin-top: 7px;
+  cursor: pointer;
 }
 
 .App-title {
   margin-top: 150px;
+  font-weight: lighter;
 }
+
 
 header {
   margin: 0;
 }
 
+h3 {
+  font-weight: lighter;
+}
+
 #header-1 {
-  height: 80%;
+  height: 85%;
   width: 100%;
   left:0%;
   overflow: hidden;
   position: absolute;
-  color: white;
+  color: rgba(255, 255, 255, .8);
 }
 
 #header-2 {
-  margin-top: 80vh;
+  margin-top: 90vh;
 }
 
 .App-intro {
   font-size: large;
 }
-
 
 #background-video{
   position: absolute;
@@ -53,7 +63,13 @@ header {
 #instructions {
   display: flex;
   flex-direction: row;
-  align-content: center;
+  justify-content: center;
+  color: rgba(231,	94,	89,	1);
+}
+
+#instructions-title {
+  margin-bottom: 50px;
+  color: grey;
 }
 
 .steps {

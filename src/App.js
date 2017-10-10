@@ -28,6 +28,14 @@ class App extends Component {
          </nav> */}
           <main>
             <Switch>
+              <Route
+                exact path="/home"
+                render={(props) => {
+                  return (
+                    <Person />
+                  )
+                }}
+              />
 
             <Route
               path="/:name"
@@ -35,14 +43,15 @@ class App extends Component {
                 return(<Task {...props}/>)
               }}
             />
-            <Route
-              path="/"
-              render={(props) => {
-                return (
-                  <Home />
-                )
-              }}
-            />
+
+              <Route
+                path="/"
+                render={(props) => {
+                  return (
+                    <Home />
+                  )
+                }}
+              />
             {/* <Route
               path="/sign-up"
               render={(props) => {
