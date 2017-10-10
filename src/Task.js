@@ -72,12 +72,6 @@ class Task extends Component{
 
 
 
-
-
-
-
-
-
   render(){
     let tasksRender = this.state.person.tasks.map((task) => {
       // PATHNAME HAS TO BE IN ALL LOWERCASE!!!!!!
