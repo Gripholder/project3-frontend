@@ -7,6 +7,6 @@ import Home from './Home'
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
-  <Home />,
+  <App />,
   document.getElementById('root'));
 registerServiceWorker();

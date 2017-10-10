@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import {
-  Link
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch
 } from 'react-router-dom'
 import logo from './manager.png'
 

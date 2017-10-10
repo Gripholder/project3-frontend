@@ -9,25 +9,26 @@ class Task extends Component{
       newName: this.props.location.state.selectedPerson.name,
       newPhone: this.props.location.state.selectedPerson.phone,
       tasks: this.props.location.state.selectedPerson.tasks,
-      newTask: ''
+      newTask: '',
+      duedate: ''
     }
   }
 
-  nameChange(e) {
+ nameChange(e) {
     this.setState({
       newName: e.target.value
     })
     console.log(this.state.newName)
   }
 
-  phoneChange(e) {
+ phoneChange(e) {
     this.setState({
       newPhone: e.target.value
     })
     console.log(this.state.newPhone)
   }
 
-  updatePerson(e){
+ updatePerson(e){
     e.preventDefault()
     console.log(this.state.person.name)
     axios.post(`http://localhost:3001/${this.state.person.name}`,
@@ -41,7 +42,7 @@ class Task extends Component{
     .then( err => console.error(err))
   }
 
-  deletePerson(e){
+ deletePerson(e){
     e.preventDefault()
     axios.post(`http://localhost:3001/${this.state.person.name}/delete`)
     //after clicking delete button, will take user back to homepage (or page where they came from before)
@@ -53,14 +54,21 @@ class Task extends Component{
      this.setState({
        newTask: e.target.value
      })
-     console.log(this.state.newTask)
+     console.log("new title is " +this.state.newTask)
    }
 
-   addTask(e){
+  newDate(e){
+     this.setState({
+       duedate: e.target.value
+     })
+     console.log("new date is " + this.state.duedate)
+   }
+
+  addTask(e){
      e.preventDefault()
      console.log(this.state.person.tasks)
      axios.post(`http://localhost:3001/${this.state.person.name}/addTask`,
-       {tasks: { title: this.state.newTask }})
+       {tasks: { title: this.state.newTask, date: this.state.duedate }})
      .then(response => {
        this.setState({
          person: response.data
@@ -70,13 +78,16 @@ class Task extends Component{
      .then(err => console.error(err))
    }
 
-  render(){
+ render(){
     let tasksRender = this.state.person.tasks.map((task) => {
       // PATHNAME HAS TO BE IN ALL LOWERCASE!!!!!!
       console.log(task)
      return (
         <p key={task._id}>
-          {task.title}
+          Task Name: {task.title}
+          <br/>
+          End Date: {task.date}
+          <br/>
           <button onClick={(e) => axios.post(`http://localhost:3001/${this.state.person.name}/${task.title}/remove`)} method='post'>Delete Task</button>
         </p>
       )
@@ -93,15 +104,11 @@ class Task extends Component{
           <button type='submit'>Update</button>
         </form>
 
-
-
-
-
-
 {/*FORM FOR ADDING A NEW TASK  */}
         <h2>New task</h2>
         <form onSubmit={(e) => this.addTask(e)} method='put'>
-          <input onChange={(e) => this.newTask(e)} type='text' value={this.state.newTask} />
+          <input onChange={(e) => this.newTask(e)} type='text'  />
+          <input onChange={(e) => this.newDate(e)} type='date'  />
           <button type='submit'>New Task</button>
         </form>
         <button onClick={(e) => this.deletePerson(e)} method='post'>Delete</button>
