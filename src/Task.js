@@ -83,7 +83,7 @@ class Task extends Component{
 
    sendSms() {
      console.log(this.state.newPhone)
-     fetch('/sendsms', {
+     fetch('http://localhost:3001/sendsms', {
        method: 'POST',
        headers: {
          Accept: 'application/JSON',
