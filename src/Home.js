@@ -15,7 +15,8 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <header>
+      <header>
+      <div class="navbar-fixed">
         <nav>
       <div class="nav-wrapper">
         <div id="logo">
@@ -37,6 +38,7 @@ class Home extends Component {
         </ul>
       </div>
     </nav>
+  </div>
   </header>
 
   <div id="header-1">
@@ -53,7 +55,6 @@ class Home extends Component {
     <div id="header-2">
       <h4 id="instructions-title"> How it works: </h4>
       <div id="instructions">
-
         <div class="instruction-steps">
         <i class="large material-icons">assignment</i>
         <h5 className="steps"> 1. Create tasks </h5>
@@ -70,8 +71,7 @@ class Home extends Component {
         </div>
 
       </div>
-      <Link to="/sign-in"> Login </Link>
-      <Link to="/sign-up"> Register </Link>
+      <a id="save-button" class="waves-effect waves-light btn-large" href="/home">I'm Ready!</a>
     </div>
 
     <footer class="page-footer">
@@ -99,7 +99,7 @@ class Home extends Component {
           </div>
         </div>
       </footer>
-          
+
   </div>
     )
   }
