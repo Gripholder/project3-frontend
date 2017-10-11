@@ -7,15 +7,25 @@ import 'whatwg-fetch';
 class Task extends Component{
   constructor(props){
     super(props)
+    var today = new Date(),
+         date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+
     this.state={
       person: this.props.location.state.selectedPerson,
       newName: this.props.location.state.selectedPerson.name,
       newPhone: this.props.location.state.selectedPerson.phone,
       tasks: this.props.location.state.selectedPerson.tasks,
       newTask: '',
-      duedate: ''
+      storedDate: this.props.location.state.selectedPerson.tasks.date,
+      duedate: '',
+      daysLeft: '',
+      date: date
     }
   }
+
+componentWillMount() {
+
+}
 
  nameChange(e) {
     this.setState({
@@ -35,7 +45,7 @@ class Task extends Component{
     e.preventDefault()
     console.log(this.state.person.name)
     axios.post(`http://localhost:3001/${this.state.person.name}`,
-    {name: this.state.newName, phone: this.state.newPrice})
+    {name: this.state.newName, phone: this.state.newPhone})
     .then( response => {
       this.setState({
         person: response.data
@@ -82,15 +92,11 @@ class Task extends Component{
    }
 
    sendSms() {
+     console.log(this.state.date)
      console.log(this.state.newPhone)
-     fetch('http://localhost:3001/sendsms', {
-       method: 'POST',
-       headers: {
-         Accept: 'application/JSON',
-         'Content-Type': 'application/JSON'
-       },
-       body: JSON.stringify({"recipient": this.state.newPhone})
-     });
+     axios.post('http://localhost:3001/sendsms',
+     {"recipient": this.state.newPhone})
+     .then((res, err) => {console.log(res, err)})
    }
 
  render(){

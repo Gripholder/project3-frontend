@@ -12,6 +12,13 @@ import logo from './smiley-phone.png'
 import video from './phone-scroll.mp4'
 
 class Home extends Component {
+  componentWillMount() {
+    var CronJob = require('cron').CronJob;
+    new CronJob('* * * * * *', function() {
+    console.log('You will see this message every second');
+  }, null, true);
+  }
+
   render() {
     return (
       <div>
@@ -48,7 +55,7 @@ class Home extends Component {
       Your browser does not support the video tag.
     </video>
   <h1 className="App-title">iDidit</h1>
-  <h3> Procrastination meets its match </h3>
+  <h3> Procrastination Meets Its Match </h3>
   </div>
 
 
