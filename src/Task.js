@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import './css/materialize.css'
+import './App.css'
 
 class Task extends Component{
   constructor(props){
@@ -104,7 +106,7 @@ class Task extends Component{
         <h1>{this.state.person.phone}</h1>
         <p>{tasksRender}</p>
         <h2>Update Person</h2>
-        <form class="col s12" onSubmit={(e) => this.updatePerson(e)} method='put'>
+        <form class="edit-person" onSubmit={(e) => this.updatePerson(e)} method='put'>
           <div class="row">
             <div class="input-field col s6">
               <i class="material-icons prefix">account_circle</i>
@@ -118,17 +120,17 @@ class Task extends Component{
           </div>
         </form>
 {/*FORM FOR ADDING A NEW TASK  */}
-        <h2>New task</h2>
 
-        <form class="col s12" onSubmit={(e) => this.addTask(e)} method='put'>
-          <div class="input-field col s6">
+        <form class="new-task" onSubmit={(e) => this.addTask(e)} method='put'>
+          <div id="task-form">
           <input onChange={(e) => this.newTask(e)} type='text' placeholder="task name"/>
           <input onChange={(e) => this.newDate(e)} type='date' />
+        </div>
           <button type='submit'>New Task</button>
-          </div>
+
         </form>
         <button onClick={(e) => this.deletePerson(e)} method='post'>Delete</button>
-      </div>
+    </div>
     )
   }
 }

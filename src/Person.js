@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {
   Link
 } from "react-router-dom"
+import logo from './smiley-phone.png'
+
 import axios from 'axios'
 import './css/materialize.css'
 class Person extends Component{
@@ -61,25 +63,50 @@ class Person extends Component{
       )
     })
     return (
+      <div>
+      <header>
+      <div class="navbar-fixed">
+        <nav>
+      <div class="nav-wrapper">
+        <div id="logo">
+          <img src={logo} href="/" className="App-logo brand-logo" alt="logo" />
+          <h1 className="Logo-text brand-logo">iDidit</h1>
+        </div>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="sass.html">My Dashboard</a></li>
+          <li><a href="/sign-in">Login</a></li>
+          <li><a href="collapsible.html">Logout</a></li>
+          <li><a href="mobile.html">Mobile</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+          <li><a href="sass.html">Dashboard</a></li>
+          <li><a href="badges.html">Login</a></li>
+          <li><a href="collapsible.html">Logout</a></li>
+          <li><a href="mobile.html">Mobile</a></li>
+        </ul>
+      </div>
+    </nav>
+    </div>
+    </header>
       <div class="row">
         <h2>Let's Get Started!</h2>
           <form class="col s12">
             <div class="row">
               <div class="input-field col s6">
                 <i class="material-icons prefix">account_circle</i>
-                <input onChange={ (e) => this.getName(e) } id="icon_prefix" type="text" class="validate"/>
-                <label for="icon_prefix">First Name</label>
+                <input onChange={ (e) => this.getName(e) } id="icon_prefix" type="text" class="validate" placeholder="First Name"/>
               </div>
               <div class="input-field col s6">
                 <i class="material-icons prefix">phone</i>
-                <input onChange={(e) => this.getPhone(e)} id="icon_telephone" type="tel" class="validate"/>
-                <label for="icon_telephone">Telephone</label>
+                <input onChange={(e) => this.getPhone(e)} id="icon_telephone" type="tel" class="validate" placeholder="Mobile Number"/>
               </div>
             </div>
+            <button id="save-button" onClick={(e) => this.newPerson(e)} method='post' class="waves-effect waves-light btn-large">Save</button>
           </form>
           {peopleRender}
         </div>
-
+      </div>
     )
   }
 
