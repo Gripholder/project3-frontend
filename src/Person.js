@@ -3,7 +3,7 @@ import {
   Link
 } from "react-router-dom"
 import logo from './smiley-phone.png'
-
+import 'whatwg-fetch';
 import axios from 'axios'
 import './css/materialize.css'
 class Person extends Component{
@@ -99,7 +99,7 @@ class Person extends Component{
               </div>
               <div class="input-field col s6">
                 <i class="material-icons prefix">phone</i>
-                <input onChange={(e) => this.getPhone(e)} id="icon_telephone" type="tel" class="validate" placeholder="Mobile Number"/>
+                <input onChange={(e) => this.getPhone(e)} id="icon_telephone" type="tel" class="validate" placeholder="+12223334444"/>
               </div>
             </div>
             <button id="save-button" onClick={(e) => this.newPerson(e)} method='post' class="waves-effect waves-light btn-large">Save</button>

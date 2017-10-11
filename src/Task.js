@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import './css/materialize.css'
 import './App.css'
+import 'whatwg-fetch';
 
 class Task extends Component{
   constructor(props){
@@ -80,6 +81,18 @@ class Task extends Component{
      .then(err => console.error(err))
    }
 
+   sendSms() {
+     console.log(this.state.newPhone)
+     fetch('/sendsms', {
+       method: 'POST',
+       headers: {
+         Accept: 'application/JSON',
+         'Content-Type': 'application/JSON'
+       },
+       body: JSON.stringify({"recipient": this.state.newPhone})
+     });
+   }
+
  render(){
     let tasksRender = this.state.person.tasks.map((task) => {
       // PATHNAME HAS TO BE IN ALL LOWERCASE!!!!!!
@@ -102,6 +115,7 @@ class Task extends Component{
     })
     return(
       <div>
+      <button onClick={this.sendSms.bind(this)}>Send SMS</button>
         <h1>{this.state.person.name}</h1>
         <h1>{this.state.person.phone}</h1>
         <p>{tasksRender}</p>
