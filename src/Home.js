@@ -76,15 +76,14 @@ export default withAuth(withRouter(props => {
      <a id="save-button" className="waves-effect waves-light btn-large" href="/home">I'm Ready!</a>
    </div>
 
-
-    <footer>
-        <div className="footer-copyright">
-        <div className="container">
-
+   <footer class="page-footer">
+       <div class="container">
+       <div class="footer-copyright">
+         <div class="container">
          © 2017 iDidit, Inc.
-
-     </div>
-   </div>
+         </div>
+       </div>
+        </div>
      </footer>
    </div>
  </div>
