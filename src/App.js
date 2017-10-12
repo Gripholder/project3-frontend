@@ -41,17 +41,6 @@ class App extends Component {
             />
           )}}
             />
-
-              <SecureRoute path='/protected'
-              component={Protected}/>
-            {/* <Route
-              path="/sign-up"
-              render={(props) => {
-                return (
-                  <Person />
-                )
-              }}
-            /> */}
           </Switch>
           </main>
         </div>
