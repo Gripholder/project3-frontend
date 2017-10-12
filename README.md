@@ -76,8 +76,10 @@
 
 -------------------------**MORE DOCUMENTATION**---------------------------------
 
-  [App views planing chart](../Documentation/iDiditviews.png)
-  [Presentation documents]()
+  - [App views planing chart](https://github.com/Gripholder/project3-frontend/blob/master/Documentation/iDiditviews.png)
+
+  - [Presentation documents]()
+
 
 -----------------------------------**HELP** ------------------------------------
 - Fell free to shoot us an Direct Message, via instagram with any questions, concerns or just to say hello!
