@@ -4,6 +4,7 @@ import './css/materialize.css'
 import './App.css'
 import Login from './Login.js'
 import Person from './Person.js'
+import logo from './smiley-phone.png'
 import 'whatwg-fetch';
 
 class Task extends Component{
@@ -127,26 +128,50 @@ class Task extends Component{
       // PATHNAME HAS TO BE IN ALL LOWERCASE!!!!!!
       console.log(task)
      return (
-        <p key={task._id}>
-          Task Name: {task.title}
-          <br/>
-          End Date: {task.date}
-          <br/>
-          <button onClick={(e) => axios.post(`https://idid-it.herokuapp.com/${this.state.email}/${task.title}/remove`).then(response => {
-                 this.setState({
-                   person: response.data
-                 })
-                 console.log(response)
-               }).catch(err => console.error(err))} method='post'>Delete Task</button>
-        </p>
+       <div class="row">
+      <div class="cards-pack">
+        <div class="card">
+          <div class="card-content white-text">
+            <span class="card-title">Task Name: {task.title}</span>
+            <p>Due Date: {task.date}</p>
+          </div>
+          <div class="card-action">
+            <button onClick={(e) => axios.post(`https://idid-it.herokuapp.com/${this.state.email}/${task.title}/remove`).then(response => {
+                   this.setState({
+                     person: response.data
+                   })
+                   console.log(response)
+                 }).catch(err => console.error(err))} method='post'>Delete Task</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
       )
     })
     return(
       <div>
-
+        <header>
+        <div class="navbar-fixed">
+          <nav>
+        <div class="nav-wrapper">
+          <a href="/" className="brand-logo">
+          <div id="logo">
+            <img src={logo} className="App-logo brand-logo" alt="logo" />
+            <h1 className="Logo-text brand-logo">iDidit</h1>
+          </div>
+        </a>
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="sass.html">My Dashboard</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    </header>
         <h1>{this.state.name}</h1>
         <h1>{this.state.phone}</h1>
-        <p>{tasksRender}</p>
+        <div class="cards-pack">{tasksRender}</div>
         {/* <p>{this.tasksRender()}</p> */}
         <h2>Update Person</h2>
         <form class="edit-person" onSubmit={(e) => this.updatePerson(e)} method='put'>

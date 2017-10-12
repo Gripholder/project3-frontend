@@ -19,7 +19,6 @@ export default withAuth(withRouter(props => {
   const button = props.auth.isAuthenticated() ?
     <li><a onClick={props.auth.logout.bind(null, props.history)}>Logout</a></li> :
     <li><a onClick={props.auth.login.bind(null, props.history)}>Login</a></li>;
-
   return (
     <div>
       <div>
@@ -35,13 +34,13 @@ export default withAuth(withRouter(props => {
        <ul class="right hide-on-med-and-down">
          <li><a href="sass.html">My Dashboard</a></li>
          {button}
-         <li><a href="mobile.html">Mobile</a></li>
+
        </ul>
        <ul class="side-nav" id="mobile-demo">
          <li><a href="sass.html">Dashboard</a></li>
          <li><a href="badges.html">Login</a></li>
          <li><a href="collapsible.html">Logout</a></li>
-         <li><a href="mobile.html">Mobile</a></li>
+
        </ul>
      </div>
    </nav>
@@ -55,7 +54,7 @@ export default withAuth(withRouter(props => {
      Your browser does not support the video tag.
    </video>
  <h1 className="App-title">iDidit</h1>
- <h3> Procrastination meets its match </h3>
+ <h3> Procrastination Meets Its Match </h3>
  </div>
 
 
