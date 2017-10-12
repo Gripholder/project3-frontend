@@ -59,14 +59,17 @@ class Task extends Component{
     console.log(this.state.newPhone)
   }
 
- updatePerson(e){
+ updatePerson(){
     console.log(this.state.person.name)
     axios.post(`https://idid-it.herokuapp.com/${this.state.email}`,
     {name: this.state.newName, phone: this.state.newPhone})
     .then(response => {
       console.log('success:', response)
       this.setState({
-        person: response.data
+        person: response.data,
+        tasks: response.data.tasks,
+        name: response.data.name,
+        phone: response.data.phone
       })
     }).catch(err => {
       console.log('error:', err)
@@ -192,7 +195,7 @@ class Task extends Component{
         <button onClick={(e) => this.deletePerson(e)} method='post'>Delete</button>
         <div id="update">
           <h2>Update Person</h2>
-          <form class="edit-person" onSubmit={(e) => this.updatePerson(e)} method='put'>
+          <form class="edit-person" onSubmit={this.updatePerson} method='put'>
             <div class="row">
               <div class="input-field col s6">
                 <i class="material-icons prefix">account_circle</i>
