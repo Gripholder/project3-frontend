@@ -8,7 +8,8 @@ import { withAuth } from './auth';
 export default withAuth(class Login extends Component {
   state = {
     redirectToReferrer: false,
-    token: null
+    token: null,
+    name: ''
   };
 
   componentWillMount() {
@@ -17,12 +18,14 @@ export default withAuth(class Login extends Component {
   }
 
   onSuccess(tokens) {
-    console.log(tokens)
     this.props.auth.handleAuthentication(tokens);
     this.setState({
       redirectToReferrer: true,
-      token: tokens
+      token: tokens,
+      name: tokens[0].claims.email
     });
+    console.log(this.state.token)
+    console.log(this.state.name)
   }
 
   onError(err) {
@@ -34,7 +37,7 @@ export default withAuth(class Login extends Component {
     if (this.props.location && this.props.location.state) {
       from = this.props.location.state;
     } else {
-      from = { pathname: '/' };
+      from = { pathname: `/${this.state.name}` };
     }
 
     if (this.props.auth.isAuthenticated() || this.state.redirectToReferrer) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router';
-import { withAuth } from './auth';
+import { withAuth } from './auth.js';
 
 export default withAuth(({ auth, component: Component, ...rest }) => (
   <Route {...rest} render={props => (

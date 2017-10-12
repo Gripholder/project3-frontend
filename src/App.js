@@ -14,7 +14,8 @@ import {
   BrowserRouter as Router,
   Route,
   Link,
-  Switch
+  Switch,
+  Redirect
 } from 'react-router-dom'
 
 class App extends Component {
@@ -50,22 +51,6 @@ class App extends Component {
       </header> */}
           <main>
             <Switch>
-              <SecureRoute
-                exact path="/home"
-                render={(props) => {
-                  return (
-                    <Person />
-                  )
-                }}
-              />
-
-            {/* <Route
-              path="/:name"
-              render={ (props) => {
-                return(<Task {...props}/>)
-              }}
-            /> */}
-
               <Route
                 exact
                 path="/"
@@ -75,9 +60,21 @@ class App extends Component {
                   )
                 }}
               />
+              <SecureRoute
+                exact path="/home"
+                component={Person}
+              />
 
               <Route path='/login'
               component={Login}/>
+
+            <SecureRoute
+              path="/:name"
+              component={Task}/>)
+              }}
+            />
+
+
 
               <SecureRoute path='/protected'
               component={Protected}/>
