@@ -59,6 +59,7 @@
   - The only way to stop the text messages is to assign a buddy to your account and they can send you a unique code which will allow you to cross off that task!
 
 
+
 ----------------------**END USER DOCUMENTATION** -------------------------------
 
   Below is a breakdown of how to go through the app:
@@ -72,6 +73,10 @@
     - You will also be able to access your user profile
   - Once you select to view your user profile, you will be taken to the profile page.
       - From this page you will be able to view your name, username, and phone number    entered.
+
+-------------------------**MORE DOCUMENTATION**---------------------------------
+
+  [App views planing chart](documentation/iDiditviews.png)
 
 -----------------------------------**HELP** ------------------------------------
 - Fell free to shoot us an Direct Message, via instagram with any questions, concerns or just to say hello!
