@@ -143,17 +143,16 @@ class Task extends Component{
                      person: response.data
                    })
                    console.log(response)
-                 }).catch(err => console.error(err))} method='post'>Delete Task</button>
+                 }).catch(err => console.error(err))} method='post'>Complete Task</button>
           </div>
         </div>
       </div>
     </div>
-
       )
     })
 
     return(
-      <div>
+      <div id="profile-wrapper">
         <header>
         <div class="navbar-fixed">
           <nav>
@@ -174,22 +173,23 @@ class Task extends Component{
     </header>
         <h1>{this.state.name}</h1>
         <h1>{this.state.phone}</h1>
+        <button onClick={this.updateRender}>Edit Profile</button>
+        <button onClick={(e) => this.deletePerson(e)} method='post'>Delete Profile</button>
+        <button onClick={this.newTaskRender}>Create Task</button>
+        <div id="newTask-wrapper">
+            <div id="newTask">
+            <form class="new-task" onSubmit={(e) => this.addTask(e)} method='put'>
+              <input onChange={(e) => this.newTask(e)} type='text' placeholder="task name"/>
+              <input onChange={(e) => this.newDate(e)} type='date' />
+              <button onClick={this.sendSms.bind(this)} type='submit'>Save</button>
+            </form>
+          </div>
+        </div>
+
+
         <div class="cards-pack">{tasksRender}</div>
         {/* <p>{this.tasksRender()}</p> */}
-        <button onClick={this.updateRender}>Update</button>
 {/*FORM FOR ADDING A NEW TASK  */}
-        <div id="newTask">
-        <form class="new-task" onSubmit={(e) => this.addTask(e)} method='put'>
-          <div id="task-form">
-          <input onChange={(e) => this.newTask(e)} type='text' placeholder="task name"/>
-          <input onChange={(e) => this.newDate(e)} type='date' />
-        </div>
-          <button onClick={this.sendSms.bind(this)} type='submit'>New Task</button>
-
-        </form>
-      </div>
-      <button onClick={this.newTaskRender}>Add Task</button>
-        <button onClick={(e) => this.deletePerson(e)} method='post'>Delete</button>
         <div id="update">
           <h2>Update Person</h2>
           <form class="edit-person" onSubmit={(e) => this.updatePerson(e)} method='put'>
