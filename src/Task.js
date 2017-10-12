@@ -4,6 +4,7 @@ import './css/materialize.css'
 import './App.css'
 import Login from './Login.js'
 import Person from './Person.js'
+import 'whatwg-fetch';
 
 class Task extends Component{
   constructor(props){
@@ -112,6 +113,14 @@ class Task extends Component{
      console.log(this.state.person.tasks)
    }
 
+   sendSms() {
+   console.log(this.state.date)
+   console.log(this.state.phone)
+   axios.post('http://localhost:3001/sendsms',
+   {"recipient": this.state.phone})
+   .then((res, err) => {console.log(res, err)})
+ }
+
  render(){
    console.log(this.state.tasks)
     let tasksRender = this.state.tasks.map((task) => {
@@ -134,6 +143,7 @@ class Task extends Component{
     })
     return(
       <div>
+
         <h1>{this.state.name}</h1>
         <h1>{this.state.phone}</h1>
         <p>{tasksRender}</p>
@@ -159,7 +169,7 @@ class Task extends Component{
           <input onChange={(e) => this.newTask(e)} type='text' placeholder="task name"/>
           <input onChange={(e) => this.newDate(e)} type='date' />
         </div>
-          <button type='submit'>New Task</button>
+          <button onClick={this.sendSms.bind(this)} type='submit'>New Task</button>
 
         </form>
         <button onClick={(e) => this.deletePerson(e)} method='post'>Delete</button>
