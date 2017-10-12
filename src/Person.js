@@ -12,9 +12,12 @@ class Person extends Component{
     this.state = {
       name: '',
       phone: '',
-      people: [],
+      people: []
     }
     this.getPeople = this.getPeople.bind(this)
+    this.getName = this.getName.bind(this)
+    this.getPhone = this.getPhone.bind(this)
+    this.newPerson = this.newPerson.bind(this)
   }
 
  componentDidMount(){
@@ -22,7 +25,7 @@ class Person extends Component{
   }
 
   getPeople(){
-    axios.get("http://localhost:3001/home").then((response) => {
+    axios.get("https://idid-it.herokuapp.com/home").then((response) => {
       console.log(response)
       this.setState({
         people: response.data
@@ -45,7 +48,7 @@ class Person extends Component{
 
  newPerson(e){
     e.preventDefault()
-    axios.post('http://localhost:3001/home',
+    axios.post('https://idid-it.herokuapp.com/home',
     {name: this.state.name, phone: this.state.phone})
     .then( response => console.log(response))
     .then( err => console.error(err))

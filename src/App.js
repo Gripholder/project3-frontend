@@ -2,21 +2,21 @@ import React, { Component } from 'react';
 import Person from './Person.js'
 import Task from './Task.js'
 import Home from './Home.js'
+import Login from './Login.js'
+import Protected from './Protected.js'
+import SecureRoute from './SecureRoute.js'
 import logo from './smiley-phone.png'
 import './App.css';
+
+import { Security, ImplicitCallback } from '@okta/okta-react';
+
 import {
   BrowserRouter as Router,
   Route,
   Link,
-  Switch
+  Switch,
+  Redirect
 } from 'react-router-dom'
-import { Security, SecureRoute, ImplicitCallback } from '@okta/okta-react';
-
-const config = {
-  issuer: 'https://dev-445082.oktapreview.com/oauth2/default',
-  redirectUri: window.location.origin + '/implicit/callback',
-  clientId: '0oacazdm3iYOfKuVd0h7'
-}
 
 class App extends Component {
 
@@ -52,22 +52,7 @@ class App extends Component {
           <main>
             <Switch>
               <Route
-                exact path="/home"
-                render={(props) => {
-                  return (
-                    <Person />
-                  )
-                }}
-              />
-
-            <Route
-              path="/:name"
-              render={ (props) => {
-                return(<Task {...props}/>)
-              }}
-            />
-
-              <Route
+                exact
                 path="/"
                 render={(props) => {
                   return (
@@ -75,6 +60,24 @@ class App extends Component {
                   )
                 }}
               />
+              <SecureRoute
+                exact path="/home"
+                component={Person}
+              />
+
+              <Route path='/login'
+              component={Login}/>
+
+            <SecureRoute
+              path="/:name"
+              component={Task}/>)
+              }}
+            />
+
+
+
+              <SecureRoute path='/protected'
+              component={Protected}/>
             {/* <Route
               path="/sign-up"
               render={(props) => {
