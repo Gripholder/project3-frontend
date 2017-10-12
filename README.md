@@ -1,6 +1,6 @@
 ------------------------------------**iDidit**----------------------------------
 
-                          **-Never Procrastinate Again-**
+                            **Never Procrastinate Again**
 
 
 ------------------------------**APP INFORMATION**-------------------------------
@@ -39,7 +39,7 @@
   - Responsible for the Tasks Component, all Documentation and social media
 
 **Mo**:
-  -Accountable for starting the app, merging branches, and user authentication
+  - Accountable for starting the app, merging branches, and user authentication
 
 **Group**:
   - Worked out issues which occurred during merging, styling, layouts, logic
