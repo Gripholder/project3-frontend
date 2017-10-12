@@ -70,8 +70,8 @@ Group:
       - From this page you will be able to view your name, username, and phone number    entered.
 
 -----------------------------------**HELP** ------------------------------------
-- Fell free to shoot us an email with any questions, concerns or just to say hello!
-  iDidit@gmail.com
+- Fell free to shoot us an Direct Message, via instagram with any questions, concerns or just to say hello!
+
 
 FOLLOW US:
   - @instagram - iDidit18
