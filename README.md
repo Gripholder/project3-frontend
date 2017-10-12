@@ -15,6 +15,7 @@
 
                        Two Server(Microservice) Architecture
 
+
                                 DEPLOYMENT:
                           frontend hosted on Pages
                           backend hosted on Heroku
@@ -26,6 +27,12 @@
                                 BACKEND:
                                  - MongoDB
                                  - Express
+
+                                 Twilio
+                          To send texts through our app
+
+                                 Okata
+                          For user authentication
 
 -------------**BREAKDOWN OF TEAM RESPONSIBILITIES IS AS FOLLOWS**---------------
 
@@ -78,7 +85,7 @@
 
   - [App views planing chart](https://github.com/Gripholder/project3-frontend/blob/master/Documentation/iDiditviews.png)
 
-  - [Presentation documents]()
+  - [Presentation documents](https://github.com/Gripholder/project3-frontend/blob/master/Documentation/presentation.png)
 
 
 -----------------------------------**HELP** ------------------------------------
