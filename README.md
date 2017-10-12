@@ -76,7 +76,8 @@
 
 -------------------------**MORE DOCUMENTATION**---------------------------------
 
-  [App views planing chart](documentation/iDiditviews.png)
+  [App views planing chart](../Documentation/iDiditviews.png)
+  [Presentation documents]()
 
 -----------------------------------**HELP** ------------------------------------
 - Fell free to shoot us an Direct Message, via instagram with any questions, concerns or just to say hello!
