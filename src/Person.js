@@ -3,6 +3,7 @@ import {
   Link
 } from "react-router-dom"
 import logo from './smiley-phone.png'
+import { withAuth } from './auth';
 
 import axios from 'axios'
 import './css/materialize.css'
