@@ -43,7 +43,6 @@ class Auth {
   }
 
   handleAuthentication(tokens) {
-    console.log(tokens)
     for (let token of tokens) {
       if (token.idToken) {
         this.widget.tokenManager.add('idToken', token);

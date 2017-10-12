@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import './css/materialize.css'
 import './App.css'
-import Login from './Login.js'
-import Person from './Person.js'
 import logo from './smiley-phone.png'
 import dude from './man.png'
 import 'whatwg-fetch';
@@ -41,8 +39,6 @@ class Task extends Component{
         phone: response.data.phone
       })
     }).catch(err => {
-      console.log(this.props.match.params.email)
-      console.log('error:', err)
     })
   }
 
@@ -50,24 +46,24 @@ class Task extends Component{
     this.setState({
       newName: e.target.value
     })
-    console.log(this.state.newName)
   }
 
  phoneChange(e) {
     this.setState({
       newPhone: e.target.value
     })
-    console.log(this.state.newPhone)
   }
 
- updatePerson(e){
+ updatePerson(){
     console.log(this.state.person.name)
     axios.post(`https://idid-it.herokuapp.com/${this.state.email}`,
     {name: this.state.newName, phone: this.state.newPhone})
     .then(response => {
-      console.log('success:', response)
       this.setState({
-        person: response.data
+        person: response.data,
+        tasks: response.data.tasks,
+        name: response.data.name,
+        phone: response.data.phone
       })
     }).catch(err => {
       console.log('error:', err)
@@ -86,27 +82,22 @@ class Task extends Component{
      this.setState({
        newTask: e.target.value
      })
-     console.log("new title is " + this.state.newTask)
    }
 
   newDate(e){
      this.setState({
        duedate: e.target.value
      })
-     console.log("new date is " + this.state.duedate)
    }
 
   addTask(e){
-     console.log(this.state.person.tasks)
      axios.post(`https://idid-it.herokuapp.com/${this.state.email}/addTask`,
        {tasks: { title: this.state.newTask, date: this.state.duedate }})
      .then(response => {
        this.setState({
          person: response.data
        })
-       console.log(response)
-     })
-     .then(err => console.error(err))
+     }).catch(err => console.log(err))
    }
 
    updateRender(){
@@ -126,10 +117,8 @@ class Task extends Component{
  }
 
  render(){
-   console.log(this.props.auth)
     let tasksRender = this.state.tasks.map((task) => {
       // PATHNAME HAS TO BE IN ALL LOWERCASE!!!!!!
-      console.log(task)
      return (
        <div class="row">
       <div class="cards-pack">
@@ -143,7 +132,6 @@ class Task extends Component{
                    this.setState({
                      person: response.data
                    })
-                   console.log(response)
                  }).catch(err => console.error(err))} method='post'>Complete Task</button>
           </div>
         </div>
