@@ -4,8 +4,6 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import OktaSignInWidget from './OktaSignInWidget';
 import { withAuth } from './auth';
-import logo from './smiley-phone.png'
-
 
 export default withAuth(class Login extends Component {
   state = {
@@ -26,8 +24,6 @@ export default withAuth(class Login extends Component {
       token: tokens,
       name: tokens[0].claims.email
     });
-    console.log(this.state.token)
-    console.log(this.state.name)
   }
 
   onError(err) {
@@ -48,25 +44,6 @@ export default withAuth(class Login extends Component {
 
     return (
       <div>
-        <div class="navbar-fixed">
-          <nav>
-        <div class="nav-wrapper">
-          <div id="logo">
-            <img src={logo} href="/" className="App-logo brand-logo" alt="logo" />
-            <h1 className="Logo-text brand-logo">iDidit</h1>
-          </div>
-          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-          <ul class="right hide-on-med-and-down">
-          </ul>
-          <ul class="side-nav" id="mobile-demo">
-            <li><a href="sass.html">Dashboard</a></li>
-            <li><a href="badges.html">Login</a></li>
-            <li><a href="collapsible.html">Logout</a></li>
-
-          </ul>
-        </div>
-      </nav>
-    </div>
       <OktaSignInWidget
         widget={this.props.auth.widget}
         onSuccess={this.onSuccess}
