@@ -31,8 +31,6 @@ class Task extends Component{
 
   componentWillMount(){
     axios.get(`https://idid-it.herokuapp.com/${this.state.email}`).then(response => {
-      console.log(response)
-      console.log(this.props)
       this.setState({
         person: response.data,
         tasks: response.data.tasks,
@@ -108,12 +106,16 @@ class Task extends Component{
      .then(err => console.error(err))
    }
 
-   componentDidMount(){
-     console.log(this.state.person.tasks)
+   updateRender(){
+     document.getElementById("update").style.visibility = "visible";
+   }
+
+   newTaskRender(){
+     document.getElementById("newTask").style.visibility = "visible";
    }
 
  render(){
-   console.log(this.state.tasks)
+   console.log(this.props.auth)
     let tasksRender = this.state.tasks.map((task) => {
       // PATHNAME HAS TO BE IN ALL LOWERCASE!!!!!!
       console.log(task)
@@ -132,28 +134,16 @@ class Task extends Component{
         </p>
       )
     })
+
     return(
       <div>
         <h1>{this.state.name}</h1>
         <h1>{this.state.phone}</h1>
         <p>{tasksRender}</p>
         {/* <p>{this.tasksRender()}</p> */}
-        <h2>Update Person</h2>
-        <form class="edit-person" onSubmit={(e) => this.updatePerson(e)} method='put'>
-          <div class="row">
-            <div class="input-field col s6">
-              <i class="material-icons prefix">account_circle</i>
-              <input onChange={(e) => this.nameChange(e)} id="icon_prefix" type="text" class="validate" value={this.state.newName}/>
-            </div>
-            <div class="input-field col s6">
-              <i class="material-icons prefix">phone</i>
-              <input onChange={(e) => this.phoneChange(e)} id="icon_telephone" type="tel" class="validate" value={this.state.newPhone}/>
-            </div>
-            <button type='submit'>Update</button>
-          </div>
-        </form>
+        <button onClick={this.updateRender}>Update</button>
 {/*FORM FOR ADDING A NEW TASK  */}
-
+        <div id="newTask">
         <form class="new-task" onSubmit={(e) => this.addTask(e)} method='put'>
           <div id="task-form">
           <input onChange={(e) => this.newTask(e)} type='text' placeholder="task name"/>
@@ -162,7 +152,25 @@ class Task extends Component{
           <button type='submit'>New Task</button>
 
         </form>
+      </div>
+      <button onClick={this.newTaskRender}>Add Task</button>
         <button onClick={(e) => this.deletePerson(e)} method='post'>Delete</button>
+        <div id="update">
+          <h2>Update Person</h2>
+          <form class="edit-person" onSubmit={(e) => this.updatePerson(e)} method='put'>
+            <div class="row">
+              <div class="input-field col s6">
+                <i class="material-icons prefix">account_circle</i>
+                <input onChange={(e) => this.nameChange(e)} id="icon_prefix" type="text" class="validate" value={this.state.newName}/>
+              </div>
+              <div class="input-field col s6">
+                <i class="material-icons prefix">phone</i>
+                <input onChange={(e) => this.phoneChange(e)} id="icon_telephone" type="tel" class="validate" value={this.state.newPhone}/>
+              </div>
+              <button type='submit'>Update</button>
+            </div>
+          </form>
+        </div>
     </div>
     )
   }
