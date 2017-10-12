@@ -1,6 +1,6 @@
 ------------------------------------**iDidit**----------------------------------
 
-                          **Never Procrastinate Again**
+                          **-Never Procrastinate Again-**
 
 
 ------------------------------**APP INFORMATION**-------------------------------
@@ -29,15 +29,19 @@
 
 -------------**BREAKDOWN OF TEAM RESPONSIBILITIES IS AS FOLLOWS**---------------
 
-Amarinder:
+**Amarinder**:
   - Accountable for the backend and setting up the API's
-Bil:
+
+**Bil**:
   - Accountable for Home, Persons Component, Aesthetics and Twilio
-Netsuhe:
+
+**Netsuhe**:
   - Responsible for the Tasks Component, all Documentation and social media
-Mo:
+
+**Mo**:
   -Accountable for starting the app, merging branches, and user authentication
-Group:
+
+**Group**:
   - Worked out issues which occurred during merging, styling, layouts, logic
   - Maintained daily meetings to touch base on the status of our app
   - Researched options for user authentication
@@ -73,7 +77,7 @@ Group:
 - Fell free to shoot us an Direct Message, via instagram with any questions, concerns or just to say hello!
 
 
-FOLLOW US:
+**FOLLOW US**:
   - @instagram - iDidit18
     Show us some love and leave us a comment! We would love to hear from you and the success stories you have with our app!
 
