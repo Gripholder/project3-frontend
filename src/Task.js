@@ -5,6 +5,7 @@ import './App.css'
 import Login from './Login.js'
 import Person from './Person.js'
 import logo from './smiley-phone.png'
+import dude from './man.png'
 import 'whatwg-fetch';
 
 class Task extends Component{
@@ -171,27 +172,16 @@ class Task extends Component{
       </nav>
     </div>
     </header>
-        <h1>{this.state.name}</h1>
-        <h1>{this.state.phone}</h1>
+
+      <img src={dude} id="dude"/>
+      {/* <div id="user-card"> */}
+        <h1 class="profile-text">{this.state.name}</h1>
+        <h3 class="profile-text">{this.state.phone}</h3>
+      {/* </div> */}
         <button onClick={this.updateRender}>Edit Profile</button>
         <button onClick={(e) => this.deletePerson(e)} method='post'>Delete Profile</button>
-        <button onClick={this.newTaskRender}>Create Task</button>
-        <div id="newTask-wrapper">
-            <div id="newTask">
-            <form class="new-task" onSubmit={(e) => this.addTask(e)} method='put'>
-              <input onChange={(e) => this.newTask(e)} type='text' placeholder="task name"/>
-              <input onChange={(e) => this.newDate(e)} type='date' />
-              <button onClick={this.sendSms.bind(this)} type='submit'>Save</button>
-            </form>
-          </div>
-        </div>
-
-
-        <div class="cards-pack">{tasksRender}</div>
-        {/* <p>{this.tasksRender()}</p> */}
-{/*FORM FOR ADDING A NEW TASK  */}
         <div id="update">
-          <h2>Update Person</h2>
+          <h5>Edit Profile</h5>
           <form class="edit-person" onSubmit={(e) => this.updatePerson(e)} method='put'>
             <div class="row">
               <div class="input-field col s6">
@@ -206,6 +196,22 @@ class Task extends Component{
             </div>
           </form>
         </div>
+
+        <div class="cards-pack">{tasksRender}</div>
+
+        <button onClick={this.newTaskRender}>Create Task</button>
+
+        <div id="newTask-wrapper">
+            <div id="newTask">
+            <form class="new-task" onSubmit={(e) => this.addTask(e)} method='put'>
+              <input onChange={(e) => this.newTask(e)} type='text' placeholder="task name"/>
+              <input onChange={(e) => this.newDate(e)} type='date' />
+              <button onClick={this.sendSms.bind(this)} type='submit'>Save</button>
+            </form>
+          </div>
+        </div>
+        {/* <p>{this.tasksRender()}</p> */}
+{/*FORM FOR ADDING A NEW TASK  */}
     </div>
     )
   }

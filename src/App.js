@@ -56,7 +56,7 @@ class App extends Component {
                 path="/"
                 render={(props) => {
                   return (
-                    <Home />
+                    <Home/>
                   )
                 }}
               />
@@ -73,8 +73,6 @@ class App extends Component {
               component={Task}/>)
               }}
             />
-
-
 
               <SecureRoute path='/protected'
               component={Protected}/>

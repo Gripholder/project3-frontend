@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import { withAuth } from './auth';
+import Task from './Task.js'
 import './App.css';
 import './css/materialize.css'
 // import './js/materialize.js'
@@ -17,7 +18,9 @@ import video from './phone-scroll.mp4'
 export default withAuth(withRouter(props => {
   // Change the button that's displayed, based on our authentication status
   const button = props.auth.isAuthenticated() ?
-    <li><a onClick={props.auth.logout.bind(null, props.history)}>Logout</a></li> :
+  <div>
+    <li><a>My Dashboard</a></li>
+    <li><a onClick={props.auth.logout.bind(null, props.history)}>Logout</a></li> </div> :
     <li><a onClick={props.auth.login.bind(null, props.history)}>Login</a></li>;
   return (
     <div>
@@ -32,7 +35,7 @@ export default withAuth(withRouter(props => {
        </div>
        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
        <ul class="right hide-on-med-and-down">
-         <li><a href="sass.html">My Dashboard</a></li>
+
          {button}
 
        </ul>
@@ -82,7 +85,7 @@ export default withAuth(withRouter(props => {
 
    <footer class="page-footer">
        <div class="container">
-         <div class="row">
+         {/* <div class="row">
            <div class="col l6 s12">
              <h5 class="white-text">Footer Content</h5>
              <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
@@ -96,18 +99,16 @@ export default withAuth(withRouter(props => {
                <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
              </ul>
            </div>
-         </div>
+         </div> */}
        </div>
        <div class="footer-copyright">
          <div class="container">
-         © 2014 Copyright Text
-         <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+         © 2017 iDidit, Inc.
          </div>
        </div>
      </footer>
 
  </div>
-   )
     </div>
   );
 }));

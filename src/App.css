@@ -51,6 +51,7 @@ h3 {
   margin-top: 100vh;
   height: 450px;
   top: 50%;
+  margin-bottom: 50px;
 }
 
 .App-intro {
@@ -100,7 +101,7 @@ h3 {
 
 
 #save-button {
-  margin-bottom: 50px;
+  margin-bottom: 75px;
   background-color: rgba(231,	94,	89,	1);
   width: 150px;
   border-radius: 50px;

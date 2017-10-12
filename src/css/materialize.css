@@ -5971,7 +5971,7 @@ select:focus {
 
 button:focus {
   outline: none;
-  background-color: #2ab7a9;
+  /*background-color: #2ab7a9;*/
 }
 
 label {
@@ -9091,6 +9091,15 @@ input[type=range]:focus::-ms-fill-upper {
 
 #profile-wrapper {
   text-align: center;
+  float: center;
+}
+
+#save-button {
+  margin-bottom: 50px;
+}
+
+.profile-text {
+  color: grey;
 }
 
 .picker__nav--prev:before,
@@ -9407,17 +9416,32 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   /*shape-rendering: crispEdges;*/
 }
 
+#dude {
+  width: auto;
+  height: 150px;
+  margin-top: 35px;
+}
+
 button {
   margin: 15px;
   border-radius: 20px;
-  border: 2px solid black;
-  padding: 5px;
-  color: white;
+  border: 2px solid rgb(231,	94,	89);
+  padding: 15px;
+  color: rgb(231,	94,	89);
+  background-color: white;
 }
 
 button:hover {
   background-color: white;
   color: grey;
+}
+
+#user-card {
+  color: black;
+  background-color: white;
+  width: 500px;
+  border-radius: 50px;
+  border: 3px solid grey;
 }
 
 #update {
