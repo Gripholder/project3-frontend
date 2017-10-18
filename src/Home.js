@@ -73,7 +73,7 @@ export default withAuth(withRouter(props => {
        </div>
 
      </div>
-     <a id="save-button" className="waves-effect waves-light btn-large" href="/home">I'm Ready!</a>
+     <a id="save-button" className="waves-effect waves-light btn-large" href="/login">I'm Ready!</a>
    </div>
 
    <footer class="page-footer">
