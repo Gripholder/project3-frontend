@@ -1,3 +1,16 @@
+# Amazing work on the Readme and the documentation directory.
+# Great usage of Okta for user authentication.
+# Good work using Materialize with React.
+# You have 4 components: App, Home, Person, and Task. You have also additional components for user authentication.
+# The app can use some presentational improvements, such as:
+    - There are 16 branches on this repo. You should delete the branches which you don't need any more.
+    - The repo doesn't have a link to the deployed app http://colossal-company.surge.sh/.
+    - Maybe add all the images into one folder for images.
+    - Add comments to explain what your code is doing.
+    - Since you have many components, maybe you should consider adding your components to different folders by category.
+
+
+
 ------------------------------------**iDidit**----------------------------------
 
                             **Never Procrastinate Again**
