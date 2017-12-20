@@ -14,16 +14,17 @@ class Auth {
     this.handleAuthentication = this.handleAuthentication.bind(this);
 
     this.widget = new OktaSignIn({
-      baseUrl: 'https://dev-116732.oktapreview.com/',
-      clientId: '0oaccjxgtf8ZG0nlB0h7',
+      baseUrl: 'https://dev-557547.oktapreview.com',
+      clientId: '0oacczr7hale6fOmw0h7',
       redirectUri: window.location.origin + '/implicit/callback',
       authParams: {
-        issuer: 'https://dev-116732.oktapreview.com/oauth2/default',
+        issuer: 'https://dev-557547.oktapreview.com/oauth2/default',
         responseType: ['id_token', 'token'],
         scopes: ['openid', 'email', 'profile']
       },
       idps: [
-        {type: 'FACEBOOK', id: '$239210159941650'}
+         {type: 'GOOGLE', idp: '370008702539-gpmr0as2q57fa39abfgv7jferi65t6ai.apps.googleusercontent.com'},
+         {type: 'FACEBOOK', idp: '239210159941650'}
       ]
     });
   }
@@ -45,6 +46,7 @@ class Auth {
   }
 
   handleAuthentication(tokens) {
+    console.log(tokens)
     for (let token of tokens) {
       if (token.idToken) {
         this.widget.tokenManager.add('idToken', token);

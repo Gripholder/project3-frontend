@@ -17,7 +17,7 @@ export default withAuth(class Login extends Component {
   }
 
   onSuccess(tokens) {
-    console.log(tokens[0].claims.nonce)
+    console.log(tokens)
     this.props.auth.handleAuthentication(tokens);
     this.setState({
       redirectToReferrer: true,
